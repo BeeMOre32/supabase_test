@@ -1,0 +1,39 @@
+$main-color: #292C43;
+$important-color: #8083A3;
+$success-color: #0fbcf9;
+$warning-color: #ffcc00;
+$danger-color: #ff0000;
+$light-color: #FBFBFF;
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body{
+  font-family: 'Pretendard-Regular', serif;
+  font-size: 16px;
+  color: $light-color;
+  background-color: $main-color;
+}
+
+@mixin skeleton {
+  background: $main-color
+  linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s loading ease-in-out infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
+}

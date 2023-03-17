@@ -1,12 +1,12 @@
 import React from 'react';
-import PostAddForm from './components/PostAddForm';
 import AllPosts from './components/AllPosts';
+import './style/app.scss';
 
 function App() {
   return (
     <div className="App">
-      <h1>Supabase React</h1>
-      <PostAddForm />
+      <h1>Write EveryThing</h1>
+      {/*<PostAddForm />*/}
       <AllPosts />
     </div>
   );

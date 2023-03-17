@@ -8,12 +8,12 @@ export default function AllPosts() {
   const { data, isLoading, isError } = useQuery<getAllPostType[]>(['allPost'], getAllPost, {});
 
   return (
-    <div>
+    <div className="board__wrapper">
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error</p>}
       {data?.map((post) => {
         return (
-          <div key={post.id}>
+          <div key={post.id} className="board__item">
             <h3>{post.title}</h3>
             <p>{post.content}</p>
             <Button content="Edit" option={{ id: post.id }} />
