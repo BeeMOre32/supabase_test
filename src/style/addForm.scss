@@ -1,0 +1,57 @@
+@import 'variables';
+
+.form__add {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: $important-color;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: $light-color;
+    color: $main-color;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    &::placeholder {
+      color: $main-color;
+    }
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: $success-color;
+    color: $light-color;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    &.form__button--loading {
+      background-color: $warning-color;
+    }
+    &.form__button--error {
+      background-color: $danger-color;
+    }
+    &:hover {
+      background-color: $success-color;
+      opacity: 0.8;
+    }
+  }
+}

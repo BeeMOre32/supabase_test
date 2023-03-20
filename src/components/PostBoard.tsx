@@ -21,15 +21,15 @@ const variants: Variants = {
 };
 
 export default function PostBoard({ content }: PostBoardInterface) {
-  const [clicked, setClicked] = useState<null | number>(null);
+  const [isActive, setIsActive] = useState<null | number>(null);
 
   const handleClick = () => {
-    setClicked(content.id);
+    setIsActive(content.id);
   };
 
   const handleClickOutside = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      setClicked(null);
+      setIsActive(null);
     }
   };
 
@@ -47,7 +47,7 @@ export default function PostBoard({ content }: PostBoardInterface) {
         <h3>{content.title}</h3>
       </motion.div>
       <AnimatePresence>
-        {clicked ? (
+        {isActive ? (
           <motion.div
             onClick={handleClickOutside}
             className="detail__layout"

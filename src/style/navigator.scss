@@ -3,11 +3,10 @@
 .navigator__wrapper {
   position: fixed;
   bottom: 30px;
-  right: 100px;
+  right: 5px;
   min-width: 200px;
   display: flex;
   justify-content: center;
-
   .navigator__icon {
     span {
       font-size: 36px;
@@ -23,7 +22,7 @@
 
 .navigator__layout {
   position: absolute;
-  bottom: 50px;
+  bottom: 80px;
   right: 0;
   display: flex;
   min-width: 200px;
