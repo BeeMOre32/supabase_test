@@ -1,4 +1,5 @@
 name: ChatGPT CodeReviewer
+uses: anc95/ChatGPT-CodeReview@v1.0.3
   
   
 
