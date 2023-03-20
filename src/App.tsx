@@ -5,7 +5,7 @@ import './style/app.scss';
 function App() {
   return (
     <div className="App">
-      <h1>Write EveryThing</h1>
+      <h1 className="title">Write EveryThing</h1>
       {/*<PostAddForm />*/}
       <AllPosts />
     </div>

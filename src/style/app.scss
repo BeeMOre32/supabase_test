@@ -1,28 +1,30 @@
 @import '../style/variables.scss';
 
-.App{
+.App {
   padding: 50px 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  h1{
-    font-size: 3rem;
+  .title {
+    font-size: 4rem;
     font-weight: bold;
+    padding: 10px;
     margin: 0;
-    color: $important-color;
+    text-space: 1px;
+    @include textGradient($light-color, $important-color);
   }
 }
 
-.board__wrapper{
+.board__wrapper {
   width: 100%;
   height: 100%;
   gap: 30px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 30px;
-  .board__item{
-    padding: 20px;
+  .board__item {
+    padding: 25px;
     border-radius: 10px;
     background-color: $main-color;
     border: $light-color 2px solid;
@@ -31,5 +33,48 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $light-color;
+    }
+  }
+}
+
+.detail__layout {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  .post-detail {
+    box-shadow: 0 0 20px 0 $light-color;
+    width: 50%;
+    height: 50%;
+    background-color: $main-color;
+    border-radius: 14px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    h1 {
+      position: absolute;
+      top: 30px;
+      font-size: 3rem;
+      font-weight: bold;
+      color: $light-color;
+    }
+    p {
+      font-size: 1.2rem;
+      color: $light-color;
+    }
   }
 }
