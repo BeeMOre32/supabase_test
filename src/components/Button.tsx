@@ -8,5 +8,6 @@ export function Button({ content, option }: ButtonInterface) {
   const onClick = () => {
     mutation.mutate(option?.id as number);
   };
+
   return <button onClick={onClick}>{content}</button>;
 }

@@ -23,7 +23,7 @@ const variants: Variants = {
 export default function PostBoard({ content }: PostBoardInterface) {
   const [clicked, setClicked] = useState<null | number>(null);
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClick = () => {
     setClicked(content.id);
   };
 
