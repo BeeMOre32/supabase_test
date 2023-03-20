@@ -6,8 +6,7 @@ export function Button({ content, option }: ButtonInterface) {
   const mutation = useMutation(deletePost);
 
   const onClick = () => {
-    // @ts-ignore
-    mutation.mutate(option?.id);
+    mutation.mutate(option?.id as number);
   };
   return <button onClick={onClick}>{content}</button>;
 }
