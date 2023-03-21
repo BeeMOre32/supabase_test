@@ -1,13 +1,33 @@
 import { ButtonInterface } from '../interface/componentProp';
-import { useMutation } from '@tanstack/react-query';
-import { deletePost } from '../api/api';
+import useBtnClass from '../hook/useBtnClass';
+import classNames from 'classnames';
+import { motion, Variants } from 'framer-motion';
 
-export function Button({ content, option }: ButtonInterface) {
-  const mutation = useMutation(deletePost);
+const variants: Variants = {
+  error: {
+    translateX: [100, 0, -100, 0],
+    transition: {
+      duration: 0.1,
+      repeat: 2,
+    },
+  },
+  initial: {
+    translateX: 0,
+  },
+};
 
-  const onClick = () => {
-    mutation.mutate(option?.id as number);
-  };
+export function Button({ content, state, onClick }: ButtonInterface) {
+  const { btnType, btnClassName } = useBtnClass(state);
 
-  return <button onClick={onClick}>{content}</button>;
+  return (
+    <motion.button
+      type={btnType}
+      animate={btnClassName.includes('error') ? 'error' : 'initial'}
+      variants={variants}
+      onClick={onClick}
+      className={classNames(btnType + '__btn', btnClassName)}
+    >
+      {content}
+    </motion.button>
+  );
 }

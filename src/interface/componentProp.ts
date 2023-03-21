@@ -5,16 +5,12 @@ export interface FormInterface {
 
 export interface ButtonInterface {
   content: string;
-  option?: OptionInterface;
+  state: BtnClassHook;
+  onClick?: () => void;
 }
 
 export interface PostBoardInterface {
   content: PostInterface;
-  option?: OptionInterface;
-}
-
-export interface OptionInterface {
-  [key: string]: string | number;
 }
 
 export interface PostInterface {
@@ -25,4 +21,9 @@ export interface PostInterface {
 
 export interface PostDetailInterface {
   content: PostInterface;
+}
+
+export interface BtnClassHook {
+  type: 'submit' | 'button' | 'reset';
+  className: string;
 }

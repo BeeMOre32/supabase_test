@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import '../style/navigator.scss';
 import PostAddForm from './PostAddForm';
+import { useRecoilState } from 'recoil';
+import { formActive } from '../atom/atom';
 
 const variants: Variants = {
   addClicked: {
@@ -14,7 +16,12 @@ const variants: Variants = {
 
 function Navigator() {
   const [clicked, setClicked] = useState(false);
-  const [addFormActive, setAddFormActive] = useState(false);
+  const [addFormActive, setAddFormActive] = useRecoilState(formActive);
+
+  const handleFormActive = () => {
+    setAddFormActive((prev) => !prev);
+  };
+
   return (
     <>
       <div className="navigator__wrapper">
@@ -32,7 +39,7 @@ function Navigator() {
       <AnimatePresence>
         {clicked ? (
           <motion.div initial="" className="navigator__layout">
-            <div onClick={() => setAddFormActive((prev) => !prev)}>
+            <div onClick={handleFormActive}>
               Add Post
               <span className="material-symbols-outlined">post_add</span>
             </div>

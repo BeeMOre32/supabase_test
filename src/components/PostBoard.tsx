@@ -50,6 +50,7 @@ export default function PostBoard({ content }: PostBoardInterface) {
         {isActive ? (
           <motion.div
             onClick={handleClickOutside}
+            key={content.id}
             className="detail__layout"
             initial="initial"
             animate="animate"
