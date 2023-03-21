@@ -15,7 +15,6 @@ $light-color: #fbfbff;
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: 'Pretendard-Regular', serif;
 }
 
@@ -56,5 +55,29 @@ body {
   }
   100% {
     background-position: 0 50%;
+  }
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: $success-color;
+  color: $light-color;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  &.loading {
+    background-color: $warning-color;
+  }
+  &.error {
+    background-color: $danger-color;
+  }
+  &.success {
+    background-color: $success-color;
   }
 }
