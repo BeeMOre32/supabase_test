@@ -16,13 +16,13 @@ const variants: Variants = {
   },
 };
 
-export function Button({ content, state, onClick }: ButtonInterface) {
+export function Button({ content, state, onClick, isError }: ButtonInterface) {
   const { btnType, btnClassName } = useBtnClass(state);
 
   return (
     <motion.button
       type={btnType}
-      animate={btnClassName.includes('error') ? 'error' : 'initial'}
+      animate={isError ? 'error' : 'initial'}
       variants={variants}
       onClick={onClick}
       className={classNames(btnType + '__btn', btnClassName)}

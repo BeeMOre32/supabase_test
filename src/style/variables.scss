@@ -81,3 +81,10 @@ button {
     background-color: $success-color;
   }
 }
+
+.highlight {
+  background-color: $important-color;
+  color: $light-color;
+  padding: 0 5px;
+  border-radius: 5px;
+}

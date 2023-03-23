@@ -1,7 +1,5 @@
-import { motion, Variants } from 'framer-motion';
-import { PostDetailInterface } from '../interface/componentProp';
-
-const variants: Variants = {};
+import { motion } from 'framer-motion';
+import { PostDetailInterface } from '../../interface/componentProp';
 
 export default function PostDetail({ content }: PostDetailInterface) {
   return (

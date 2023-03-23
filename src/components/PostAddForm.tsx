@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { uploadPost } from '../api/api';
 import { useMutation } from '@tanstack/react-query';
 import { FormInterface } from '../interface/componentProp';
@@ -8,6 +8,7 @@ import { motion, Variants } from 'framer-motion';
 import { Button } from './Button';
 import { useSetRecoilState } from 'recoil';
 import { formActive } from '../atom/atom';
+import { useState } from 'react';
 
 const variants: Variants = {
   initial: {
@@ -28,19 +29,29 @@ const variants: Variants = {
 };
 
 export default function PostAddForm() {
+  const [isError, setIsError] = useState(false);
   const { mutate, isSuccess, isLoading } = useMutation(uploadPost);
   const {
     register,
     handleSubmit,
+
     formState: { errors },
   } = useForm<FormInterface>();
   const setFormActive = useSetRecoilState(formActive);
   const onSubmit: SubmitHandler<FormInterface> = async (data) => {
-    console.log(errors);
     const id = new Date().getTime();
     const uploader = { title: data.title, content: data.content, id };
 
     mutate(uploader);
+    setFormActive(false);
+  };
+
+  const onError: SubmitErrorHandler<FormInterface> = () => {
+    setIsError(false);
+
+    setTimeout(() => {
+      setIsError(true);
+    });
   };
 
   const errorMessages = Object.values(errors).map((error) => error.message);
@@ -49,7 +60,7 @@ export default function PostAddForm() {
 
   return (
     <motion.div initial="initial" animate="animate" exit="exit" variants={variants} className="form__add">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit, onError)}>
         <input
           type="text"
           className="form__title"
@@ -68,12 +79,13 @@ export default function PostAddForm() {
         />
         <Button
           content={errorMessages[0] || errorMessages[1] || submitBtnContent}
+          isError={isError}
           state={{
             type: 'submit',
             className: classNames({
               loading: isLoading,
               success: isSuccess,
-              error: errors.title || errors.content,
+              error: isError,
             }),
           }}
         />
