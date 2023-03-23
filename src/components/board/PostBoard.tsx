@@ -28,7 +28,7 @@ export default function PostBoard({ content }: PostBoardInterface) {
     e.target === e.currentTarget && isActive === content.id && setIsActive(null);
     setIsActive(content.id);
   };
-  console.log(content);
+
   const handleClickOutside = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       setIsActive(null);

@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import { isReverse, sortByState } from '../../atom/atom';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
+import { SortBy } from '../../api/atomInterface';
 
 function BoardHead() {
   const [reverse, handleReverse] = useRecoilState(isReverse);
@@ -11,31 +12,20 @@ function BoardHead() {
   const handleSortDirect = () => {
     handleReverse((prev) => !prev);
   };
-
-  const setSortBy = (type: 'date' | 'like') => {
+  const typeArray: SortBy[] = ['favorite', 'date_range'];
+  const setSortBy = (type: SortBy) => {
     handleSortBy(type);
   };
 
   return (
     <div className="board__head">
-      <motion.span
-        layout
-        onClick={() => setSortBy('date')}
-        className={classNames('material-symbols-outlined', {
-          highlight: sortState === 'date',
-        })}
-      >
-        event
-      </motion.span>
-      <motion.span
-        layout
-        onClick={() => setSortBy('like')}
-        className={classNames('material-symbols-outlined', {
-          highlight: sortState === 'like',
-        })}
-      >
-        favorite
-      </motion.span>
+      {typeArray.map((type) => (
+        <span key={type} onClick={() => setSortBy(type)} className="material-symbols-outlined board__icon">
+          {type}
+          {sortState === type && <motion.span layoutId="highlight" className="highlight sort"></motion.span>}
+        </span>
+      ))}
+
       <span
         onClick={handleSortDirect}
         className={classNames('material-symbols-outlined', {

@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import { SortBy } from '../api/atomInterface';
 
 export const formActive = atom<boolean>({
   key: 'formActive',
@@ -10,7 +11,7 @@ export const isReverse = atom<boolean>({
   default: false,
 });
 
-export const sortByState = atom<'date' | 'like'>({
+export const sortByState = atom<SortBy>({
   key: 'sortBy',
-  default: 'date',
+  default: 'date_range',
 });

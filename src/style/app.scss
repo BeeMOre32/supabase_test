@@ -29,6 +29,9 @@
     cursor: pointer;
     color: $light-color;
   }
+  .board__icon {
+    position: relative;
+  }
 }
 
 .board__wrapper {

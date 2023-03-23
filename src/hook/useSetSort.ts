@@ -14,15 +14,20 @@ export default function useSortedByState(data: getAllPostType[] | undefined, rev
   };
 
   const sortByLike = (data: getAllPostType[]) => {
-    return data.sort((a, b) => a.like - b.like);
+    console.log(data);
+    return data.sort((a, b) => b.like - a.like);
+  };
+
+  const reVerseDate = (data: getAllPostType[]) => {
+    return data.reverse();
   };
 
   useEffect(() => {
     let newData = [...data];
 
-    if (sortBy === 'date') sortByDate(newData);
-    if (sortBy === 'like') sortByLike(newData);
-    if (reverse) newData = [...newData].reverse();
+    if (sortBy === 'favorite') sortByLike(newData);
+    if (sortBy === 'date_range') sortByDate(newData);
+    if (reverse) reVerseDate(newData);
 
     setSortedData(newData);
   }, [sortBy, reverse]);
