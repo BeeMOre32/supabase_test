@@ -19,6 +19,7 @@ export interface PostInterface {
   title: string;
   content: string;
   like: number;
+  createdAt: string;
 }
 
 export interface PostDetailInterface {
