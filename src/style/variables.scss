@@ -81,3 +81,23 @@ button {
     background-color: $success-color;
   }
 }
+
+.highlight {
+  display: block;
+  background-color: $important-color;
+  color: $light-color;
+  border-radius: 5px;
+  &.sort {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    z-index: -1;
+    display: block;
+    border-radius: 5px;
+    background-color: $important-color;
+    color: $light-color;
+  }
+}

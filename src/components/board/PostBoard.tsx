@@ -1,7 +1,8 @@
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { PostBoardInterface } from '../interface/componentProp';
+import { PostBoardInterface } from '../../interface/componentProp';
 import React, { useState } from 'react';
 import PostDetail from './PostDetails';
+import LikeBtn from './LikeBtn';
 
 const variants: Variants = {
   hover: {
@@ -23,7 +24,8 @@ const variants: Variants = {
 export default function PostBoard({ content }: PostBoardInterface) {
   const [isActive, setIsActive] = useState<null | number>(null);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.target === e.currentTarget && isActive === content.id && setIsActive(null);
     setIsActive(content.id);
   };
 
@@ -45,6 +47,7 @@ export default function PostBoard({ content }: PostBoardInterface) {
         className="board__item"
       >
         <h3>{content.title}</h3>
+        <LikeBtn like={content.like} id={content.id} />
       </motion.div>
       <AnimatePresence>
         {isActive ? (

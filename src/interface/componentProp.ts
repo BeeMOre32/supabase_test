@@ -5,6 +5,7 @@ export interface FormInterface {
 
 export interface ButtonInterface {
   content: string;
+  isError?: boolean;
   state: BtnClassHook;
   onClick?: () => void;
 }
@@ -17,6 +18,7 @@ export interface PostInterface {
   id: number;
   title: string;
   content: string;
+  like: number;
 }
 
 export interface PostDetailInterface {
@@ -26,4 +28,9 @@ export interface PostDetailInterface {
 export interface BtnClassHook {
   type: 'submit' | 'button' | 'reset';
   className: string;
+}
+
+export interface LikeBtnInterface {
+  like: number;
+  id: number;
 }
