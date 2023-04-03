@@ -24,6 +24,7 @@ export interface PostInterface {
 
 export interface PostDetailInterface {
   content: PostInterface;
+  onClose: () => void;
 }
 
 export interface BtnClassHook {

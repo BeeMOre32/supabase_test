@@ -3,6 +3,7 @@ import React from 'react';
 import { LikeBtnInterface } from '../../interface/componentProp';
 import { useMutation } from '@tanstack/react-query';
 import { upDatePostLike } from '../../api/api';
+import { useQueryClient } from '@tanstack/react-query';
 
 const variants = {
   isLoading: {
@@ -19,7 +20,13 @@ const variants = {
 };
 
 function LikeBtn({ like, id }: LikeBtnInterface) {
-  const { mutate, isLoading, isSuccess } = useMutation(upDatePostLike);
+  const queryClient = useQueryClient();
+
+  const { mutate, isLoading, isSuccess } = useMutation(upDatePostLike, {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['allPosts'], refetchType: 'all' });
+    },
+  });
   const onLikeBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     mutate({ id, like: like + 1 });

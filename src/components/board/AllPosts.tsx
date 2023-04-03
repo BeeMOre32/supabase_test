@@ -5,25 +5,29 @@ import PostBoard from './PostBoard';
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import BoardHead from './BoardHead';
-import { useRecoilValue } from 'recoil';
-import { isReverse } from '../../atom/atom';
+
 import useSortedByState from '../../hook/useSetSort';
 
 export default function AllPosts() {
-  const { data, isLoading, isError } = useQuery<getAllPostType[]>(['allPost'], getAllPost, {});
+  const { data, isLoading, isError, isFetching } = useQuery<getAllPostType[]>(['allPosts'], getAllPost, {});
   data?.sort((a, b) => a.id - b.id);
 
-  const isReverseState = useRecoilValue(isReverse);
   const [dataState, setDataState] = useState<getAllPostType[]>([]);
-  const sortedData = useSortedByState(dataState, isReverseState);
+  const sortedData = useSortedByState(dataState, isFetching);
+
+  useEffect(() => {
+    if (!data) return;
+    setDataState(data);
+  }, [isLoading]);
 
   useEffect(() => {
     setDataState(sortedData);
   }, [sortedData]);
 
   useEffect(() => {
-    if (!isLoading) setDataState(data!);
-  }, [isLoading]);
+    if (!data) return;
+    if (!isFetching) setDataState(data);
+  }, [isFetching]);
 
   return (
     <>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
-import { sortByState } from '../atom/atom';
+import { isReverse, sortByState } from '../atom/atom';
 import { getAllPostType } from '../interface/apiInterface';
 
-export default function useSortedByState(data: getAllPostType[] | undefined, reverse: boolean) {
+export default function useSortedByState(data: getAllPostType[] | undefined) {
   const sortBy = useRecoilValue(sortByState);
+  const reverse = useRecoilValue(isReverse);
   const [sortedData, setSortedData] = useState<getAllPostType[]>([]);
 
   if (!data) return sortedData;
@@ -14,7 +15,6 @@ export default function useSortedByState(data: getAllPostType[] | undefined, rev
   };
 
   const sortByLike = (data: getAllPostType[]) => {
-    console.log(data);
     return data.sort((a, b) => b.like - a.like);
   };
 
