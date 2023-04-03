@@ -15,3 +15,8 @@ export const sortByState = atom<SortBy>({
   key: 'sortBy',
   default: 'date_range',
 });
+
+export const setModalState = atom<null | number>({
+  key: 'setModalState',
+  default: null,
+});

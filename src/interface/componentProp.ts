@@ -19,10 +19,12 @@ export interface PostInterface {
   title: string;
   content: string;
   like: number;
+  createdAt: string;
 }
 
 export interface PostDetailInterface {
   content: PostInterface;
+  onClose: () => void;
 }
 
 export interface BtnClassHook {

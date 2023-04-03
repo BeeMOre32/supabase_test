@@ -75,7 +75,7 @@
     .like__btn {
       position: absolute;
       top: 0;
-      right: 1rem;
+      right: 1.5rem;
       height: 40px;
       width: 40px;
       background-color: transparent;
@@ -107,8 +107,8 @@
   z-index: 10;
   .post-detail {
     box-shadow: 0 0 20px 0 $light-color;
-    width: 50%;
-    height: 50%;
+    width: 40%;
+    height: 20%;
     background-color: $main-color;
     border-radius: 14px;
     padding: 30px;
@@ -117,17 +117,80 @@
     align-items: center;
     justify-content: center;
     gap: 40px;
-    position: relative;
-    h1 {
-      position: absolute;
-      top: 30px;
-      font-size: 3rem;
-      font-weight: bold;
-      color: $light-color;
+    .post-detail__title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      .post-detail__sub {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-self: end;
+        gap: 10px;
+      }
+      h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: $light-color;
+        justify-self: center;
+      }
+      h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $light-color;
+        white-space: nowrap;
+      }
+      .btn__close {
+        margin: 0 auto;
+        width: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color: $danger-color;
+      }
     }
-    p {
-      font-size: 1.2rem;
-      color: $light-color;
+    .post-detail__content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $light-color;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .board__wrapper {
+    &.item__2 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    &.item__3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &.item__4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .detail__layout {
+    .post-detail {
+      width: 80%;
+      height: 40%;
     }
   }
 }

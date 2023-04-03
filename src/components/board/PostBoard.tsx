@@ -30,10 +30,10 @@ export default function PostBoard({ content }: PostBoardInterface) {
   };
 
   const handleClickOutside = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      setIsActive(null);
-    }
+    if (e.target === e.currentTarget) setIsActive(null);
   };
+
+  const handleButtonClose = () => setIsActive(null);
 
   return (
     <>
@@ -60,7 +60,7 @@ export default function PostBoard({ content }: PostBoardInterface) {
             exit="exit"
             variants={variants}
           >
-            <PostDetail content={content} />
+            <PostDetail content={content} onClose={handleButtonClose} />
           </motion.div>
         ) : null}
       </AnimatePresence>
