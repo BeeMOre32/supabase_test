@@ -13,7 +13,7 @@ export default function AllPosts() {
   data?.sort((a, b) => a.id - b.id);
 
   const [dataState, setDataState] = useState<getAllPostType[]>([]);
-  const sortedData = useSortedByState(dataState, isFetching);
+  const sortedData = useSortedByState(dataState);
 
   useEffect(() => {
     if (!data) return;
