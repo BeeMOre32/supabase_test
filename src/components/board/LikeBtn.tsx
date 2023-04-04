@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 import { LikeBtnInterface } from '../../interface/componentProp';
 import { useMutation } from '@tanstack/react-query';
 import { upDatePostLike } from '../../api/api';
@@ -21,7 +21,6 @@ const variants = {
 
 function LikeBtn({ like, id }: LikeBtnInterface) {
   const queryClient = useQueryClient();
-
   const { mutate, isLoading, isSuccess } = useMutation(upDatePostLike, {
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['allPosts'], refetchType: 'all' });
